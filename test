@@ -1,0 +1,43 @@
+import { test, expect } from '@playwright/test';
+
+test.describe('Website Navigation', () => {
+  const baseURL = 'https://ruelabadam.com';
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto(baseURL);
+  });
+
+  test('Home page loads successfully', async ({ page }) => {
+    await expect(page).toHaveTitle(/Ruel Abadam/i); // Adjust based on actual title
+  });
+
+  test('Navigate to About page', async ({ page }) => {
+    await page.click('text=About');
+    await expect(page).toHaveURL(`${baseURL}/about`);
+  });
+
+  test('Navigate to Podcast page', async ({ page }) => {
+    await page.click('text=Podcast');
+    await expect(page).toHaveURL(`${baseURL}/podcast`);
+  });
+
+  test('Navigate to Blog page', async ({ page }) => {
+    await page.click('text=Blog');
+    await expect(page).toHaveURL(`${baseURL}/blog`);
+  });
+
+  test('Navigate to Contact page', async ({ page }) => {
+    await page.click('text=Contact');
+    await expect(page).toHaveURL(`${baseURL}/contact`);
+  });
+
+  test('Ensure all pages are accessible from each other', async ({ page }) => {
+    const navLinks = ['About', 'Podcast', 'Blog', 'Contact'];
+
+    for (const link of navLinks) {
+      await page.click(`text=${link}`);
+      await expect(page).toHaveURL(new RegExp(`${baseURL}/(${link.toLowerCase()})`));
+      await page.goto(baseURL); // Go back to home for the next iteration
+    }
+  });
+});
