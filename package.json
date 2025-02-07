@@ -1,0 +1,26 @@
+{
+  "name": "my-playwright",
+  "version": "1.0.0",
+  "description": "Feature: Website Navigation     As a user     I want to navigate across all pages of my website     So that I can confirm each page loads correctly",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rabadam/my-playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rabadam/my-playwright/issues"
+  },
+  "homepage": "https://github.com/rabadam/my-playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1"
+  }
+}
