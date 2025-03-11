@@ -27,7 +27,7 @@ test.describe('Website Navigation', () => {
   });
 
   test('Navigate to Contact page', async ({ page }) => {
-    await page.click('text=Contact Me');
+    await page.click('text=Contact');
     await expect(page).toHaveTitle(/Contact - Ruel Abadam/i);
   });
 
