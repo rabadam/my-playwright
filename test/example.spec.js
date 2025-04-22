@@ -39,5 +39,15 @@ test.describe('Website Navigation', () => {
       await expect(page).toHaveURL(new RegExp(`${baseURL}/(${link.toLowerCase()})`));
       await page.goto(baseURL); // Go back to home for the next iteration
     }
-  }); 
+  });
+
+  test('Contact form submission and success message', async ({ page }) => {
+    await page.click('text=Contact');
+    await page.fill('input[name="g51-name"]', 'Test User');
+    await page.fill('input[name="g51-email"]', 'test@example.com');
+    await page.fill('textarea[name="g51-message"]', 'This is a test message');
+    await page.click('button[type="submit"]');
+    await expect(page.locator('#contact-form-success-header')).toBeVisible();
+    await expect(page.locator('#contact-form-success-header')).toContainText('Your message has been sent');
+  });
 });
